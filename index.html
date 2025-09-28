@@ -149,6 +149,11 @@
             percentPosition: true, // disables exaggerated percentage calculation
             fitWidth: false      // aligns left
         });
+
+        // Recalculate after window fully loads
+        window.addEventListener('load', () => {
+            msnry.layout();
+        });
     </script>
     <script>
         const ap_audio = document.getElementById('arpa-mpeg-radio');
