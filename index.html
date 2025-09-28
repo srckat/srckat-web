@@ -23,16 +23,16 @@
     <!-- Bio Block -->
     <div>
         <p class="schoolbell-regular" style="font-size: 25px;">
-                Hello, it's me, <b>srckat</b>!<br/>
-                I love to play games, write code,<br/>
-                and spend time with friends!<br/>
-                Feel free to contact me anytime!
-            </p>
+            Hello, it's me, <b>srckat</b>!<br />
+            I love to play games, write code,<br />
+            and spend time with friends!<br />
+            Feel free to contact me anytime!
+        </p>
 
-        </div>
+    </div>
 
-        <!-- Link Block -->
-        <div style=" line-height: 1px;">
+    <!-- Link Block -->
+    <div style=" line-height: 1px;">
         <p class="schoolbell-regular" style="font-size: 50px; color: black;">Links:</p>
         <ul style="line-height: 40px;">
             <li><a href="https://arparec.xyz" class="schoolbell-regular link">arparec.xyz</a></li>
@@ -53,20 +53,17 @@
 
     <script>
         async function loadPageViews() {
-            try {
-                const response = await fetch("https://pop.srckat.me/api/pageview");
-                if (!response.ok) throw new Error("Network response was not ok");
-
-                const data = await response.text();
-
-                document.getElementById("pageviews").textContent =
-                    data;
-            } catch (err) {
-                document.getElementById("pageviews").textContent = "Error loading views";
-                console.error("Error fetching page views:", err);
-            }
+            fetch("https://pop.srckat.me/api/pageview", {
+                method: "GET",
+                credentials: "include" // <--- send cookies to keep the session
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("pageviews").textContent = `Page views: ${data.count}`;
+                })
+                .catch(err => console.error(err));
         }
-
+        
         loadPageViews();
     </script>
 </body>
