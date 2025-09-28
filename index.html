@@ -57,13 +57,13 @@
                 method: "GET",
                 credentials: "include" // <--- send cookies to keep the session
             })
-                .then(res => res.json())
+                .then(res => res.text())
                 .then(data => {
-                    document.getElementById("pageviews").textContent = `Page views: ${data.count}`;
+                    document.getElementById("pageviews").textContent = data;
                 })
                 .catch(err => console.error(err));
         }
-        
+
         loadPageViews();
     </script>
 </body>
