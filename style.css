@@ -26,7 +26,29 @@
 .bb-border {
   border: 4px solid rgb(221, 135, 217);
   border-radius: 40px;
-  width: max-content;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px;
   background-color: #f09ed0;
+  box-sizing: border-box;
+  /* Remove width: max-content */
+  max-width: 300px; /* optional: keeps blocks from growing too wide */
+  width: 100%;      /* makes block fill Masonry column */
 }
+
+.grid-container {
+  position: relative; /* required for Masonry */
+}
+
+.grid-sizer {
+  width: 300px; /* minimum column width */
+}
+
+.abstract-div {
+  margin-bottom: 20px;  /* vertical spacing */
+  box-sizing: border-box;
+}
+
+
+
+
+
+

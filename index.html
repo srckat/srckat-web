@@ -17,40 +17,51 @@
         <h1 class="schoolbell-regular size-title">Welcome!!!</h1>
     </div>
 
-    <div class="bb-border" style="padding-bottom: 20px;">
-        <p class="schoolbell-regular" style="font-size: 40px; color: black;  line-height: 5px;">About:</p>
-        <p class="schoolbell-regular" style="font-size: 25px; font-weight: 600; display: inline;">Page Views:&nbsp;</p>
-        <p class="schoolbell-regular" id="pageviews" style="display: inline; font-size: 25px;">Loading...</p>
+    <div class="grid-container">
+        <div class="grid-sizer"></div>
+        <div class="bb-border abstract-div" style="padding-bottom: 20px;">
+            <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">About:</p>
+            <p class="schoolbell-regular" style="font-size: 25px; font-weight: 600; display: inline;">Page Views:&nbsp;
+            </p>
+            <p class="schoolbell-regular" id="pageviews" style="display: inline; font-size: 25px;">Loading...</p>
 
-        <p class="schoolbell-regular" style="font-size: 25px;">
-            Hello, it's me, <b><a href="https://discord.gg/tsgGc5yTP5" class="schoolbell-regular link">@srckat</a></b>!<br />
-            I love to play games, write code,<br />
-            and spend time with friends!<br />
-            Feel free to contact me anytime!
-        </p>
+            <p class="schoolbell-regular" style="font-size: 25px;">
+                Hello, it's me, <b><a href="https://discord.gg/tsgGc5yTP5"
+                        class="schoolbell-regular link">@srckat</a></b>!<br />
+                I love to play games, write code,<br />
+                and spend time with friends!<br />
+                Feel free to contact me anytime!
+            </p>
+            <br /><br /><br /><br /><br /><br />
+        </div>
+
+        <!-- Project Block -->
+        <div class="bb-border abstract-div" style="padding-bottom: 2px;">
+            <p class="schoolbell-regular" style="font-size: 25px; line-height: 1px;">Haiiiiiiiii</p>
+        </div>
+
+        <!-- Projects Block -->
+        <div class="bb-border abstract-div" style="padding-bottom: 20px;">
+            <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">Projects:</p>
+            <ul style="line-height: 40px;">
+                <li><a style="font-size: 30px;" href="https://github.com/srckat/OctoEngineMarrow"
+                        class="schoolbell-regular link">BONELAB Modding Framework</a></li>
+                <li><a style="font-size: 30px;" href="https://discord.gg/M95Tx5DP4F" class="schoolbell-regular link">AI
+                        Discord Bot</a></li>
+                <li><a style="font-size: 30px;" href="https://mod.io/u/srckat" class="schoolbell-regular link">BONELAB
+                        Mods</a></li>
+            </ul>
+        </div>
     </div>
 
-    <br />
 
     <div>
-        <!-- Projects Block -->
-        <div class="bb-border" style="padding-bottom: 20px;">
-        <p class="schoolbell-regular" style="font-size: 40px; color: black;  line-height: 5px;">Projects:</p>
-
-        <p class="schoolbell-regular" style="font-size: 25px;">
-
-        <ul style="line-height: 40px;">
-                <li><a style="font-size: 30px;" href="https://github.com/srckat/OctoEngineMarrow" class="schoolbell-regular link">BONELAB Modding Framework</a></li>
-                <li><a style="font-size: 30px;" href="https://discord.gg/M95Tx5DP4F" class="schoolbell-regular link">AI Discord Bot</a></li>
-                <li><a style="font-size: 30px;" href="https://mod.io/u/srckat" class="schoolbell-regular link">BONELAB Mods</a></li>
-        </ul>
-    </div>
-
         <!-- Link Block -->
         <div style=" line-height: 1px;">
             <p class="schoolbell-regular" style="font-size: 50px; color: black;">Links:</p>
             <ul style="line-height: 40px;">
-                <li><a style="font-size: 50px;" href="https://arparec.xyz" class="schoolbell-regular link">arparec.xyz</a></li>
+                <li><a style="font-size: 50px;" href="https://arparec.xyz"
+                        class="schoolbell-regular link">arparec.xyz</a></li>
             </ul>
         </div>
 
@@ -59,13 +70,14 @@
             <p class="schoolbell-regular" style="font-size: 50px; color: black;">Contact:</p>
             <ul style="line-height: 40px;">
 
-                <li><a style="font-size: 50px;" href="https://github.com/srckat" class="schoolbell-regular link">@srckat</a><span
-                        class="schoolbell-regular" style="font-size: 50px;"> > github</span></li>
+                <li><a style="font-size: 50px;" href="https://github.com/srckat"
+                        class="schoolbell-regular link">@srckat</a><span class="schoolbell-regular"
+                        style="font-size: 50px;"> > github</span></li>
             </ul>
         </div>
     </div>
 
-    <br/><br/><br/>
+    <br /><br /><br />
 
     <script>
         async function loadPageViews() {
@@ -80,8 +92,22 @@
                 .catch(err => console.error(err));
         }
 
-        loadPageViews();
+        //loadPageViews();
     </script>
+
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script>
+const grid = document.querySelector('.grid-container');
+new Masonry(grid, {
+  itemSelector: '.abstract-div',
+  columnWidth: '.grid-sizer', 
+  gutter: 20,          // controls horizontal spacing
+  percentPosition: false, // disables exaggerated percentage calculation
+  fitWidth: false      // aligns left
+});
+
+</script>
+
 </body>
 
 </html>
