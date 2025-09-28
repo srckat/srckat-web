@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>srckat</title>
+</head>
+
+<body>
+    <!-- Title Block -->
+    <div>
+        <h1 class="schoolbell-regular size-title">Welcome!!!</h1>
+    </div>
+
+    <div>
+        <p class="schoolbell-regular" style="font-size: 25px; font-weight: 600; display: inline;">Page Views:&nbsp;</p>
+        <p class="schoolbell-regular" id="pageviews" style="display: inline; font-size: 25px;">Loading...</p>
+    </div>
+
+    <!-- Bio Block -->
+    <div>
+        <p class="schoolbell-regular" style="font-size: 25px;">
+                Hello, it's me, <b>srckat</b>!<br/>
+                I love to play games, write code,<br/>
+                and spend time with friends!<br/>
+                Feel free to contact me anytime!
+            </p>
+
+        </div>
+
+        <!-- Link Block -->
+        <div style=" line-height: 1px;">
+        <p class="schoolbell-regular" style="font-size: 50px; color: black;">Links:</p>
+        <ul style="line-height: 40px;">
+            <li><a href="https://arparec.xyz" class="schoolbell-regular link">arparec.xyz</a></li>
+            <li><a href="https://github.com/techsideofficial" class="schoolbell-regular link">github.com</a></li>
+        </ul>
+    </div>
+
+    <!-- Contact Block -->
+    <div style="line-height: 1px;">
+        <p class="schoolbell-regular" style="font-size: 50px; color: black;">Contact:</p>
+        <ul style="line-height: 40px;">
+            <li><a href="https://discord.gg/tsgGc5yTP5" class="schoolbell-regular link">@srckat</a><span
+                    class="schoolbell-regular" style="font-size: 50px;"> > discord</span></li>
+            <li><a href="https://github.com/techsideofficial" class="schoolbell-regular link">@techsideofficial</a><span
+                    class="schoolbell-regular" style="font-size: 50px;"> > github</span></li>
+        </ul>
+    </div>
+
+    <script>
+        async function loadPageViews() {
+            try {
+                const response = await fetch("https://pop.srckat.me/api/pageview");
+                if (!response.ok) throw new Error("Network response was not ok");
+
+                const data = await response.text();
+
+                document.getElementById("pageviews").textContent =
+                    data;
+            } catch (err) {
+                document.getElementById("pageviews").textContent = "Error loading views";
+                console.error("Error fetching page views:", err);
+            }
+        }
+
+        loadPageViews();
+    </script>
+</body>
+
+</html>

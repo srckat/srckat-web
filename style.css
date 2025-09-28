@@ -1,0 +1,24 @@
+:root {
+  --shadow-color: pink;
+}
+
+.schoolbell-regular {
+  font-family: "Schoolbell", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.size-title {
+    font-size: 80px;
+    margin-top: 0%;
+    text-shadow: 3px 3px 0px var(--shadow-color);
+}
+
+.rshadow {
+    text-shadow: 3px 3px 0px var(--shadow-color);
+}
+
+.link {
+    font-size: 50px;
+    color: #8bdeff;
+}
