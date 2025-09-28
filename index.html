@@ -21,23 +21,22 @@
         <div class="grid-sizer"></div>
         <div class="bb-border abstract-div" style="padding-bottom: 20px;">
             <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">About:</p>
+
+
+            <p class="schoolbell-regular" style="font-size: 25px;">
+                Haiiiii, it's me, <b><a href="https://discord.gg/tsgGc5yTP5"
+                        class="schoolbell-regular link">@srckat</a></b>!<br />
+                I love to play games, write code,
+                and spend time with friends!
+                Feel free to contact me anytime!
+            </p>
+        </div>
+
+        <!-- Page Views -->
+        <div class="bb-border abstract-div" style="padding-bottom: 2px;">
             <p class="schoolbell-regular" style="font-size: 25px; font-weight: 600; display: inline;">Page Views:&nbsp;
             </p>
             <p class="schoolbell-regular" id="pageviews" style="display: inline; font-size: 25px;">Loading...</p>
-
-            <p class="schoolbell-regular" style="font-size: 25px;">
-                Hello, it's me, <b><a href="https://discord.gg/tsgGc5yTP5"
-                        class="schoolbell-regular link">@srckat</a></b>!<br />
-                I love to play games, write code,<br />
-                and spend time with friends!<br />
-                Feel free to contact me anytime!
-            </p>
-            <br /><br /><br /><br /><br /><br />
-        </div>
-
-        <!-- Project Block -->
-        <div class="bb-border abstract-div" style="padding-bottom: 2px;">
-            <p class="schoolbell-regular" style="font-size: 25px; line-height: 1px;">Haiiiiiiiii</p>
         </div>
 
         <!-- Projects Block -->
@@ -52,33 +51,80 @@
                         Mods</a></li>
             </ul>
         </div>
-    </div>
 
+        <!-- Radio -->
+        <div class="bb-border abstract-div" style="padding-bottom: 2px;">
+            <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">Radio:</p>
+            <audio style="width: 270px;" id="arpa-mpeg-radio"></audio>
+            <div class="audio-controls bb-border">
+                <button id="arpa-mpeg-radio-play" class="control-btn schoolbell-regular">Play</button>
+                <button id="arpa-mpeg-radio-pause" class="control-btn schoolbell-regular">Pause</button>
+                <input type="range" id="arpa-mpeg-radio-volume" min="0" max="1" step="0.01" class="volume-slider">
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="bb-border abstract-div" style="padding-bottom: 2px;">
+            <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">Contact:</p>
+            <ul style="line-height: 40px;">
+                <li>
+                    <span class="schoolbell-regular" style="font-size: 30px;">
+                        Discord:
+                    </span>
+                    <a style="font-size: 30px;" href="https://discord.gg/tsgGc5yTP5" class="schoolbell-regular link">
+                        @srckat
+                    </a>
+                </li>
+                <li>
+                    <span class="schoolbell-regular" style="font-size: 30px;">
+                        Github:
+                    </span>
+                    <a style="font-size: 30px;" href="https://github.com/srckat" class="schoolbell-regular link">
+                        @srckat
+                    </a>
+                </li>
+                <li>
+                    <span class="schoolbell-regular" style="font-size: 30px;">
+                        Email:
+                    </span>
+                    <a style="font-size: 30px;" href="mailto:srckat@srckat.me" class="schoolbell-regular link">
+                        srckat@srckat.me
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Links -->
+        <div class="bb-border abstract-div" style="padding-bottom: 2px;">
+            <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">Links:</p>
+            <ul style="line-height: 40px;">
+                <li>
+                    <a style="font-size: 30px;" href="https://srckat.me" class="schoolbell-regular link">
+                        srckat.me
+                    </a>
+                </li>
+                <li>
+                    <a style="font-size: 30px;" href="https://arparec.xyz" class="schoolbell-regular link">
+                        arparec.xyz
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div>
-        <!-- Link Block -->
-        <div style=" line-height: 1px;">
-            <p class="schoolbell-regular" style="font-size: 50px; color: black;">Links:</p>
-            <ul style="line-height: 40px;">
-                <li><a style="font-size: 50px;" href="https://arparec.xyz"
-                        class="schoolbell-regular link">arparec.xyz</a></li>
-            </ul>
-        </div>
-
         <!-- Contact Block -->
         <div style="line-height: 1px;">
-            <p class="schoolbell-regular" style="font-size: 50px; color: black;">Contact:</p>
-            <ul style="line-height: 40px;">
-
-                <li><a style="font-size: 50px;" href="https://github.com/srckat"
-                        class="schoolbell-regular link">@srckat</a><span class="schoolbell-regular"
-                        style="font-size: 50px;"> > github</span></li>
-            </ul>
+            <p class="schoolbell-regular" style="font-size: 20px; color: black;">
+                Made with 🩷 by srckat
+            </p>
         </div>
     </div>
 
-    <br /><br /><br />
-
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="js/radio.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script>
         async function loadPageViews() {
             fetch("https://pop.srckat.me/api/pageview", {
@@ -92,22 +138,27 @@
                 .catch(err => console.error(err));
         }
 
-        //loadPageViews();
+        loadPageViews();
     </script>
+    <script>
+        const grid = document.querySelector('.grid-container');
+        new Masonry(grid, {
+            itemSelector: '.abstract-div',
+            columnWidth: '.grid-sizer',
+            gutter: 20,          // controls horizontal spacing
+            percentPosition: true, // disables exaggerated percentage calculation
+            fitWidth: false      // aligns left
+        });
+    </script>
+    <script>
+        const ap_audio = document.getElementById('arpa-mpeg-radio');
+        const ap_play = document.getElementById('arpa-mpeg-radio-play');
+        const ap_pause = document.getElementById('arpa-mpeg-radio-pause');
+        const ap_volume = document.getElementById('arpa-mpeg-radio-volume');
 
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script>
-const grid = document.querySelector('.grid-container');
-new Masonry(grid, {
-  itemSelector: '.abstract-div',
-  columnWidth: '.grid-sizer', 
-  gutter: 20,          // controls horizontal spacing
-  percentPosition: false, // disables exaggerated percentage calculation
-  fitWidth: false      // aligns left
-});
-
-</script>
-
+        ap_play.addEventListener('click', () => ap_audio.play());
+        ap_pause.addEventListener('click', () => ap_audio.pause());
+        ap_volume.addEventListener('input', () => ap_audio.volume = ap_volume.value);
+    </script>
 </body>
-
 </html>
