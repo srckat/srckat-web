@@ -36,8 +36,23 @@
 
 .grid-container {
   position: relative;
-  max-width: 1000px;  /* optional: container max width */
+  max-width: 2000px; /* default for large screens */
 }
+
+/* tablet */
+@media (max-width: 1200px) {
+  .grid-container {
+    max-width: 700px;
+  }
+}
+
+/* mobile */
+@media (max-width: 1000px) {
+  .grid-container {
+    max-width: 1000px; /* full width on small screens */
+  }
+}
+
 
 .grid-sizer {
   width: 300px;       /* sets the base column width for Masonry */
@@ -124,7 +139,7 @@
 
 .fade-top {
   /*height: 200px; /* Or any desired height */
-  background: linear-gradient(to top, rgba(216, 112, 147, 1) 30%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(216, 112, 147, 1) 20%, rgba(0, 0, 0, 0) 100%);
   /* Replace rgba(0, 0, 0, 1) with your desired starting color (e.g., #FF0000 for red) */
   /* Replace rgba(0, 0, 0, 0) with the transparent version of your color */
 }
