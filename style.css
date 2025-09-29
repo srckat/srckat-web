@@ -36,7 +36,7 @@
 
 .grid-container {
   position: relative;
-  max-width: 700px;  /* optional: container max width */
+  max-width: 1000px;  /* optional: container max width */
 }
 
 .grid-sizer {
