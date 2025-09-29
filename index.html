@@ -148,7 +148,7 @@
     </script>
     <script>
         const grid = document.querySelector('.grid-container');
-        new Masonry(grid, {
+        const msnry = new Masonry(grid, {
             itemSelector: '.abstract-div',
             columnWidth: '.grid-sizer',
             gutter: 20,          // controls horizontal spacing
