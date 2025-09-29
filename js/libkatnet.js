@@ -25,6 +25,14 @@ async function initPageCustom() {
     document.getElementById("lkat-age").innerHTML = age;
     document.getElementById("lkat-pronoun").innerHTML = data.config.owner.pronoun;
     document.getElementById("lkat-motd").innerHTML = data.config.katweb.motd;
+    document.getElementById("lkat-trusted").innerHTML = data.config.katweb.trusted;
+    document.getElementById("lkat-favgame").innerHTML = data.config.katweb.favgame;
+    
+    if (data.config.global_netvars.s_hgf) {
+      document.getElementById("lkat-hgf").innerHTML = "Taken :3";
+    } else {
+      document.getElementById("lkat-hgf").innerHTML = "Single :[";
+    }
   } catch (err) {
     console.error("Error fetching age:", err);
   }

@@ -36,7 +36,7 @@
 
 .grid-container {
   position: relative;
-  max-width: 1200px;  /* optional: container max width */
+  max-width: 1000px;  /* optional: container max width */
 }
 
 .grid-sizer {
@@ -112,8 +112,19 @@
   box-shadow: 1px 1px 0 #fff;
 }
 
+.fixed-bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0; /* Optional: to stretch across the width */
+  width: 100%; /* Optional: to stretch across the width */
+  padding-top: 10px;
+  /* Add other styling like background-color, padding, etc. */
+  /*background-color: rgba(216, 112, 147, 0.445);
+}
 
-
-
-
-
+.fade-top {
+  /*height: 200px; /* Or any desired height */
+  background: linear-gradient(to top, rgba(216, 112, 147, 1) 30%, rgba(0, 0, 0, 0) 100%);
+  /* Replace rgba(0, 0, 0, 1) with your desired starting color (e.g., #FF0000 for red) */
+  /* Replace rgba(0, 0, 0, 0) with the transparent version of your color */
+}

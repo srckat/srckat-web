@@ -34,9 +34,10 @@
         <div class="bb-border abstract-div" style="padding-bottom: 0px;">
             <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">Specifics:</p>
             <p class="schoolbell-regular" style="font-size: 25px;">
-                <b>Name: </b><span id="lkat-name">-</span><br/>
-                <b>Age: </b><span id="lkat-age">-</span><br/>
-                <b>Pronouns: </b><span id="lkat-pronoun">-</span><br/>
+                <b>Name: </b><span id="lkat-name">-</span><br />
+                <b>Age: </b><span id="lkat-age">-</span><br />
+                <b>Pronouns: </b><span id="lkat-pronoun">-</span><br />
+                <b>Status: </b><span id="lkat-hgf">-</span><br />
             </p>
         </div>
 
@@ -44,7 +45,7 @@
         <div class="bb-border abstract-div" style="padding-bottom: 2px;">
             <p class="schoolbell-regular" style="font-size: 25px; font-weight: 600; display: inline;">Page Views:&nbsp;
             </p>
-            <p class="schoolbell-regular" id="pageviews" style="display: inline; font-size: 25px;">Loading...</p>
+            <p class="schoolbell-regular" id="pageviews" style="display: inline; font-size: 25px;">-</p>
         </div>
 
         <!-- Projects Block -->
@@ -119,18 +120,25 @@
             </ul>
         </div>
 
-        <!-- Projects Block -->
+        <!-- Current Fav Game -->
+        <div class="bb-border abstract-div" style="padding-bottom: 2px;">
+            <p class="schoolbell-regular" style="font-size: 25px; font-weight: 600; display: inline;">Fav Game:&nbsp;
+            </p>
+            <p class="schoolbell-regular" id="lkat-favgame" style="display: inline; font-size: 25px;">-</p>
+        </div>
+
+        <!-- MOTD -->
         <div class="bb-border abstract-div" style="padding-bottom: 20px;">
             <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">Today's Message:</p>
             <p class="schoolbell-regular" style="font-size: 25px;" id="lkat-motd">-</p>
         </div>
-    </div>
 
-    <div>
-        <!-- Contact Block -->
-        <div style="line-height: 1px;">
-            <p class="schoolbell-regular" style="font-size: 20px; color: black;">
-                Made with 🩷 by srckat
+        <!-- Trusted -->
+        <div class="bb-border abstract-div" style="padding-bottom: 0px;">
+            <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">Trusted people:</p>
+
+            <p class="schoolbell-regular" style="font-size: 25px;" id="lkat-trusted">
+
             </p>
         </div>
     </div>
@@ -170,6 +178,7 @@
         window.addEventListener('load', () => {
             msnry.layout();
         });
+        window.addEventListener('resize', () => msnry.layout());
     </script>
     <script>
         const ap_audio = document.getElementById('arpa-mpeg-radio');
@@ -182,4 +191,15 @@
         ap_volume.addEventListener('input', () => ap_audio.volume = ap_volume.value);
     </script>
 </body>
+<footer>
+    <div>
+        <!-- Contact Block -->
+        <div style="line-height: 1px;" class="fixed-bottom-div fade-top">
+            <p class="schoolbell-regular" style="font-size: 20px; color: black; padding-left: 10px;">
+                Made with 🩷 by srckat
+            </p>
+        </div>
+    </div>
+</footer>
+
 </html>
