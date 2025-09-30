@@ -36,23 +36,8 @@
 
 .grid-container {
   position: relative;
-  max-width: 2000px; /* default for large screens */
+  max-width: 1200px; /* default for large screens */
 }
-
-/* tablet */
-@media (max-width: 1200px) {
-  .grid-container {
-    max-width: 700px;
-  }
-}
-
-/* mobile */
-@media (max-width: 1000px) {
-  .grid-container {
-    max-width: 1000px; /* full width on small screens */
-  }
-}
-
 
 .grid-sizer {
   width: 300px;       /* sets the base column width for Masonry */
