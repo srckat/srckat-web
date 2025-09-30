@@ -143,3 +143,98 @@
   /* Replace rgba(0, 0, 0, 1) with your desired starting color (e.g., #FF0000 for red) */
   /* Replace rgba(0, 0, 0, 0) with the transparent version of your color */
 }
+
+/* Popup overlay */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup box */
+.popup-content {
+  border: 4px solid rgb(221, 135, 217);
+  border-radius: 40px;
+  background-color: #f09ed0;
+  padding: 20px;
+  max-width: 500px;
+  width: 95%;
+  text-align: center;
+  position: relative;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Drawing buttons */
+.drawing-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+.colorbtn {
+  height: 4em;
+  width: 4em;
+  border-radius: 50%;
+  border: 0.4em solid var(--pink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--shadow-color);
+  transition: transform 0.1s;
+}
+
+.drawing-buttons button:hover {
+  transform: scale(1.1);
+}
+
+#draw-color-black { background: #000; }
+#draw-color-red { background: #f00; }
+#draw-color-white { background: #fff; }
+
+/* Canvas stack */
+.drawing-canvases {
+  display: grid;
+  justify-content: center;
+}
+
+.drawing-canvases canvas {
+  grid-column: 1;
+  grid-row: 1;
+  border: 0.5em solid var(--pink);
+  border-radius: 0.5em;
+  background: white;
+  image-rendering: pixelated;
+  cursor: crosshair;
+}
+
+.drawing-buttons {
+  display: flex;
+  gap: 0.5em;
+}
+
+.drawing-canvases {
+  margin-top: 1em;
+}
+
+.drawing-canvases canvas {
+  border: 0.5em solid var(--pink);
+  border-radius: 0.5em;
+  width: calc(100% - 1em);
+  height: auto;
+  image-rendering: pixelated;
+  cursor: crosshair;
+  background: #fff; /* canvas background */
+}
+

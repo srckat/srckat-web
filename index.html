@@ -5,7 +5,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon"
         href="https://cdn-public-service-prod03.ol.arparec.xyz/useruploads/1759044864386-srckat_pfp.webp">
     <title>srckat</title>
@@ -154,17 +154,51 @@
 
         <!-- Current Project -->
         <div class="bb-border abstract-div" style="padding-bottom: 2px;">
-            <p class="schoolbell-regular" style="font-size: 25px; font-weight: 600; display: inline;">Current Project(s):&nbsp;
-            </p><br/>
+            <p class="schoolbell-regular" style="font-size: 35px; color: black; line-height: 5px;">Current Project(s):&nbsp;
+            </p>
             <p class="schoolbell-regular bb" id="lkat-currproj" style="font-size: 25px; max-width: 300px; width: 100%;">-</p>
+        </div>
+
+        <!-- Interactive -->
+        <div class="bb-border abstract-div" style="padding-bottom: 15px;">
+            <p class="schoolbell-regular" style="font-size: 35px; color: black; line-height: 5px;">Interactive things:&nbsp;
+            </p>
+            <button id="open-draw" class="control-btn schoolbell-regular">Draw Something</button>
+            
         </div>
     </div>
 
+    <!-- Popup Overlay -->
+    <div id="draw-popup" class="popup-overlay">
+        <div class="popup-content bb-border drawing" id="drawing">
+            <span id="close-draw" class="popup-close">&times;</span>
+
+            <h2 class="schoolbell-regular" style="font-size: 30px; margin-top: 0;">Draw!</h2>
+            <p class="schoolbell-regular bb" style="font-size: 25px; max-width: 300px; width: 100%; margin: 0 auto;">Drawings will be sent to my Discord server!</p>
+
+            <!-- Drawing buttons -->
+            <div class="drawing-buttons">
+                <button id="draw-color-black" title="Black" class="colorbtn"></button>
+                <button id="draw-color-red" title="Red" class="colorbtn"></button>
+                <button id="draw-color-white" title="Eraser" class="colorbtn"></button>
+                <button id="draw-send" class="control-btn schoolbell-regular">Send</button>
+            </div>
+
+            <!-- Single canvas -->
+            <div class="drawing-canvases">
+                <canvas id="drawing-canvas" width="400" height="300"></canvas>
+            </div>
+            <p class="schoolbell-regular bb" style="font-size: 15px; max-width: 300px; width: 100%; margin: 0 auto;">To prevent spam, there is a 60-second cooldown between submissions.</p>
+        </div>
+    </div>
+
+
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="js/radio.js"></script>
-    <script src="js/libkatnet.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="static/js/radio.js"></script>
+    <script src="static/js/libkatnet.js"></script>
+    <script src="static/js/kdraw.js"></script>
     <script>
         async function loadPageViews() {
             fetch("https://pop.srckat.me/api/pageview", {
@@ -207,6 +241,19 @@
         ap_pause.addEventListener('click', () => ap_audio.pause());
         ap_volume.addEventListener('input', () => ap_audio.volume = ap_volume.value);
     </script>
+    <script>
+        const popup = document.getElementById("draw-popup");
+        const openBtn = document.getElementById("open-draw");
+        const closeBtn = document.getElementById("close-draw");
+
+        openBtn.addEventListener("click", () => popup.style.display = "flex");
+        closeBtn.addEventListener("click", () => popup.style.display = "none");
+        popup.addEventListener("click", e => { if (e.target === popup) popup.style.display = "none"; });
+
+        // You can drop in the drawing.js code we wrote earlier here ↓
+    </script>
+
+    
 </body>
 <footer>
     <div>
