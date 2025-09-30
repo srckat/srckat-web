@@ -226,7 +226,7 @@
         });
 
         // Recalculate after window fully loads
-        window.addEventListener('load', () => {
+        window.addEventListener('onInitComplete', () => {
             msnry.layout();
         });
         window.addEventListener('resize', () => msnry.layout());

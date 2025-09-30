@@ -36,7 +36,7 @@
 
 .grid-container {
   position: relative;
-  max-width: 1200px; /* default for large screens */
+  max-width: 2200px; /* default for large screens */
 }
 
 .grid-sizer {

@@ -37,6 +37,14 @@ async function initPageCustom() {
   } catch (err) {
     console.error("Error fetching age:", err);
   }
+
+  const onInit = new CustomEvent('onInitComplete', {
+        //detail: { message: 'Hello from custom event!', data: 123 },
+        bubbles: true, // Allows the event to bubble up the DOM tree
+        cancelable: true // Allows the event to be canceled
+    });
+  await window.dispatchEvent(onInit);
+
 }
 
 initPageCustom();
