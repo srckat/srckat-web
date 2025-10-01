@@ -3,8 +3,10 @@
 
 <head>
     <meta property="og:title" content="srckat">
-    <meta property="og:description" content="My personal website where I introduce myself and show what I'm working on.">
-    <meta property="og:image" content="https://cdn-public-service-prod03.ol.arparec.xyz/useruploads/1759044864386-srckat_pfp.webp">
+    <meta property="og:description"
+        content="My personal website where I introduce myself and show what I'm working on.">
+    <meta property="og:image"
+        content="https://cdn-public-service-prod03.ol.arparec.xyz/useruploads/1759044864386-srckat_pfp.webp">
     <meta property="og:url" content="https://srckat.me">
     <meta property="og:type" content="website">
     <meta property="og:color" content="#f09ed0"> <!-- Optional: Hex color for the embed sidebar -->
@@ -64,7 +66,8 @@
                         Discord Bot</a></li>
                 <li><a style="font-size: 25px;" href="https://mod.io/u/srckat" class="schoolbell-regular link">BONELAB
                         Mods</a></li>
-                <li><a style="font-size: 25px;" href="https://aos-docs.arparec.xyz" class="schoolbell-regular link">ArpaRec API</a></li>
+                <li><a style="font-size: 25px;" href="https://aos-docs.arparec.xyz"
+                        class="schoolbell-regular link">ArpaRec API</a></li>
             </ul>
         </div>
 
@@ -160,27 +163,44 @@
 
         <!-- Current Project -->
         <div class="bb-border abstract-div" style="padding-bottom: 2px;">
-            <p class="schoolbell-regular" style="font-size: 35px; color: black; line-height: 5px;">Current Project(s):&nbsp;
+            <p class="schoolbell-regular" style="font-size: 35px; color: black; line-height: 5px;">Current
+                Project(s):&nbsp;
             </p>
-            <p class="schoolbell-regular bb" id="lkat-currproj" style="font-size: 25px; max-width: 300px; width: 100%;">-</p>
+            <p class="schoolbell-regular bb" id="lkat-currproj" style="font-size: 25px; max-width: 300px; width: 100%;">
+                -</p>
         </div>
 
         <!-- Interactive -->
         <div class="bb-border abstract-div" style="padding-bottom: 15px;">
-            <p class="schoolbell-regular" style="font-size: 35px; color: black; line-height: 5px;">Interactive things:&nbsp;
+            <p class="schoolbell-regular" style="font-size: 35px; color: black; line-height: 5px;">Interactive
+                things:&nbsp;
             </p>
             <button id="open-draw" class="control-btn schoolbell-regular">Send me a drawing!</button>
-            
         </div>
+
+        <!-- News -->
+        <div class="bb-border abstract-div" style="padding-bottom: 15px;">
+            <p class="schoolbell-regular" style="font-size: 35px; color: black; line-height: 5px;">News:&nbsp;
+            </p>
+            <div id="news-entries-smol">
+                <div class="bb-border" style="padding-left: 20px;">
+                    <p class="schoolbell-regular" style="font-size: 20px; line-height: 1px;">-</p>
+                </div>
+            </div>
+            <button id="news-readmore" class="control-btn schoolbell-regular">Read more...</button>
+
+        </div>
+        <div class="grid-spacer"></div>
     </div>
 
-    <!-- Popup Overlay -->
+    <!-- Draw Overlay -->
     <div id="draw-popup" class="popup-overlay">
         <div class="popup-content bb-border drawing" id="drawing">
             <span id="close-draw" class="popup-close">&times;</span>
 
             <h2 class="schoolbell-regular" style="font-size: 30px; margin-top: 0;">Draw!</h2>
-            <p class="schoolbell-regular bb" style="font-size: 25px; max-width: 300px; width: 100%; margin: 0 auto;">Drawings will be sent to my Discord server!</p>
+            <p class="schoolbell-regular bb" style="font-size: 25px; max-width: 300px; width: 100%; margin: 0 auto;">
+                Drawings will be sent to my Discord server!</p>
 
             <!-- Drawing buttons -->
             <div class="drawing-buttons">
@@ -194,7 +214,19 @@
             <div class="drawing-canvases">
                 <canvas id="drawing-canvas" width="400" height="300"></canvas>
             </div>
-            <p class="schoolbell-regular bb" style="font-size: 15px; max-width: 300px; width: 100%; margin: 0 auto;">To prevent spam, there is a 60-second cooldown between submissions.</p>
+            <p class="schoolbell-regular bb" style="font-size: 15px; max-width: 300px; width: 100%; margin: 0 auto;">To
+                prevent spam, there is a 60-second cooldown between submissions.</p>
+        </div>
+    </div>
+
+    <!-- News Overlay -->
+    <div id="news-popup" class="popup-overlay">
+        <div class="popup-content bb-border" id="news">
+            <span id="close-news" class="popup-close">&times;</span>
+            <h2 class="schoolbell-regular" style="font-size: 30px; margin-top: 0;">News</h2>
+            <div id="news-entries-larg" style="margin: 0 auto; overflow-y: scroll; max-height: 400px;">
+
+            </div>
         </div>
     </div>
 
@@ -202,6 +234,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="static/js/dateconv.js"></script>
     <script src="static/js/radio.js"></script>
     <script src="static/js/libkatnet.js"></script>
     <script src="static/js/kdraw.js"></script>
@@ -255,11 +288,16 @@
         openBtn.addEventListener("click", () => popup.style.display = "flex");
         closeBtn.addEventListener("click", () => popup.style.display = "none");
         popup.addEventListener("click", e => { if (e.target === popup) popup.style.display = "none"; });
-
-        // You can drop in the drawing.js code we wrote earlier here ↓
     </script>
+    <script>
+        const newsPopup = document.getElementById("news-popup");
+        const newsOpenBtn = document.getElementById("news-readmore");
+        const newsCloseBtn = document.getElementById("close-news");
 
-    
+        newsOpenBtn.addEventListener("click", () => newsPopup.style.display = "flex");
+        newsCloseBtn.addEventListener("click", () => newsPopup.style.display = "none");
+        newsPopup.addEventListener("click", e => { if (e.target === newsPopup) newsPopup.style.display = "none"; });
+    </script>
 </body>
 <footer>
     <div>

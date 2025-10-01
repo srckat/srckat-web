@@ -36,7 +36,7 @@
 
 .grid-container {
   position: relative;
-  max-width: 2200px; /* default for large screens */
+  max-width: 100%; /* default for large screens */
 }
 
 .grid-sizer {
@@ -223,3 +223,13 @@
   background: #fff; /* canvas background */
 }
 
+.text-cutoff {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.grid-spacer {
+  height: 1000px; /* pushes bottom of grid up from page bottom */
+  width: 100%;
+}
