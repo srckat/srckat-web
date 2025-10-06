@@ -1,6 +1,13 @@
 :root {
-  --shadow-color: rgb(226, 158, 169);
-  background-color: rgb(243, 222, 250);
+  --shadow-color: #e29ea9;
+  --container-bg-color: #f09ed0;
+  --container-border-color: #dd87d9;
+  --text-shadow-a: #ff86d1;
+  --text-shadow-b: #4fc3f7;
+  
+
+  /* Theme Colors */
+  background-color: hsl(285, 74%, 93%);
 }
 
 .schoolbell-regular {
@@ -12,7 +19,7 @@
 .size-title {
     font-size: 80px;
     margin-top: 0;
-    text-shadow: 4px 4px 0 #ff86d1, -4px -4px 0 #4fc3f7;
+    text-shadow: 4px 4px 0 var(--text-shadow-a), -4px -4px 0 var(--text-shadow-b);
 }
 
 .rshadow {
@@ -24,10 +31,10 @@
 }
 
 .bb-border {
-  border: 4px solid rgb(221, 135, 217);
+  border: 4px solid var(--container-border-color);
   border-radius: 40px;
   padding: 0px 10px;
-  background-color: #f09ed0;
+  background-color: var(--container-bg-color);
   box-sizing: border-box;
   /* Remove width: max-content */
   max-width: 300px; /* optional: keeps blocks from growing too wide */
@@ -55,7 +62,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  background-color: #f09ed0;
+  background-color: var(--container-bg-color);
   border-radius: 40px;
   box-shadow: 3px 3px 0px var(--shadow-color);
   max-width: 300px;
@@ -68,12 +75,12 @@
   font-style: normal;
   font-size: 16px;
   padding: 5px 10px;
-  border: 2px solid rgb(221, 135, 217);
+  border: 2px solid var(--container-border-color);
   border-radius: 20px;
-  background-color: #f09ed0;
+  background-color: var(--container-bg-color);
   color: #fff;
   cursor: pointer;
-  box-shadow: 2px 2px 0 rgb(221, 135, 217);
+  box-shadow: 2px 2px 0 var(--container-border-color);
   transition: transform 0.1s;
 }
 
@@ -86,8 +93,8 @@
   width: 100px;
   height: 8px;
   border-radius: 4px;
-  background: rgb(221, 135, 217);
-  box-shadow: inset 0 0 3px rgb(221, 135, 217);
+  background: var(--container-border-color);
+  box-shadow: inset 0 0 3px var(--container-border-color);
   outline: none;
   cursor: pointer;
 }
@@ -98,7 +105,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: rgb(255, 255, 255);
+  background: #ffffff;
   cursor: pointer;
   box-shadow: 1px 1px 0 #fff;
 }
@@ -107,7 +114,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: rgb(221, 135, 217);
+  background: var(--container-border-color);
   cursor: pointer;
   box-shadow: 1px 1px 0 #fff;
 }
@@ -124,7 +131,7 @@
 
 .fade-top {
   /*height: 200px; /* Or any desired height */
-  background: linear-gradient(to top, rgba(216, 112, 147, 1) 20%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, #d87093 20%, rgba(0, 0, 0, 0) 100%);
   /* Replace rgba(0, 0, 0, 1) with your desired starting color (e.g., #FF0000 for red) */
   /* Replace rgba(0, 0, 0, 0) with the transparent version of your color */
 }
@@ -143,9 +150,9 @@
 
 /* Popup box */
 .popup-content {
-  border: 4px solid rgb(221, 135, 217);
+  border: 4px solid var(--container-border-color);
   border-radius: 40px;
-  background-color: #f09ed0;
+  background-color: var(--container-bg-color);
   padding: 20px;
   max-width: 500px;
   width: 95%;

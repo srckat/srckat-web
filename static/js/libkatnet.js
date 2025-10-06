@@ -28,11 +28,16 @@ async function initPageCustom() {
     document.getElementById("lkat-trusted").innerHTML = data.config.katweb.trusted;
     document.getElementById("lkat-favgame").innerHTML = data.config.katweb.favgame;
     document.getElementById("lkat-currproj").innerHTML = data.config.katweb.currproj;
+    document.getElementById("lkat-mood").innerHTML = data.config.owner.mood;
     
     if (data.config.global_netvars.s_hgf) {
       document.getElementById("lkat-hgf").innerHTML = "Taken :3";
     } else {
       document.getElementById("lkat-hgf").innerHTML = "Single :[";
+    }
+
+    if (!data.config.katweb.site_netvars.enabledrawing) {
+      document.getElementById("open-draw").onclick = openDisabledPopup;
     }
   } catch (err) {
     console.error("Error fetching age:", err);

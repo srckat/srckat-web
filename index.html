@@ -45,6 +45,7 @@
                 <b>Name: </b><span id="lkat-name">-</span><br />
                 <b>Age: </b><span id="lkat-age">-</span><br />
                 <b>Pronouns: </b><span id="lkat-pronoun">-</span><br />
+                <b>Mood: </b><span id="lkat-mood">-</span><br />
                 <b>Status: </b><span id="lkat-hgf">-</span><br />
             </p>
         </div>
@@ -143,7 +144,7 @@
             <p class="schoolbell-regular" style="font-size: 25px;" id="lkat-motd">-</p>
         </div>
 
-        <!-- Trusted -->
+        <!-- Trusted (BFFS) -->
         <div class="bb-border abstract-div" style="padding-bottom: 0px;">
             <p class="schoolbell-regular" style="font-size: 40px; color: black; line-height: 5px;">Trusted people:</p>
 
@@ -175,7 +176,7 @@
             <p class="schoolbell-regular" style="font-size: 35px; color: black; line-height: 5px;">Interactive
                 things:&nbsp;
             </p>
-            <button id="open-draw" class="control-btn schoolbell-regular">Send me a drawing!</button>
+            <button id="open-draw" class="control-btn schoolbell-regular" onclick="openDraw()">Send me a drawing!</button>
         </div>
 
         <!-- News -->
@@ -230,6 +231,15 @@
         </div>
     </div>
 
+    <!-- Feature Disabled Popup -->
+    <div id="disabled-popup" class="popup-overlay">
+        <div class="popup-content bb-border flex" id="news">
+            <span id="close-disabled" class="popup-close">&times;</span>
+            <h2 class="schoolbell-regular" style="font-size: 30px; margin-top: 0;">Notice</h2>
+            <p class="schoolbell-regular bb" style="font-size: 20px; max-width: 300px; width: 100%; margin: 0 auto;">This feature has been disabled.</p>
+        </div>
+    </div>
+
 
     <!-- Scripts -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
@@ -252,7 +262,7 @@
         }
 
         // Comment this out when testing
-        loadPageViews();
+        //loadPageViews();
     </script>
     <script>
         const grid = document.querySelector('.grid-container');
@@ -282,10 +292,12 @@
     </script>
     <script>
         const popup = document.getElementById("draw-popup");
-        const openBtn = document.getElementById("open-draw");
         const closeBtn = document.getElementById("close-draw");
 
-        openBtn.addEventListener("click", () => popup.style.display = "flex");
+        function openDraw() {
+            popup.style.display = "flex"
+        }
+
         closeBtn.addEventListener("click", () => popup.style.display = "none");
         popup.addEventListener("click", e => { if (e.target === popup) popup.style.display = "none"; });
     </script>
@@ -297,6 +309,16 @@
         newsOpenBtn.addEventListener("click", () => newsPopup.style.display = "flex");
         newsCloseBtn.addEventListener("click", () => newsPopup.style.display = "none");
         newsPopup.addEventListener("click", e => { if (e.target === newsPopup) newsPopup.style.display = "none"; });
+    </script>
+    <script>
+        const disabledPopup = document.getElementById("disabled-popup");
+        const disabledCloseBtn = document.getElementById("close-disabled");
+
+        function openDisabledPopup() {
+            disabledPopup.style.display = "flex"
+        }
+        disabledCloseBtn.addEventListener("click", () => disabledPopup.style.display = "none");
+        disabledPopup.addEventListener("click", e => { if (e.target === disabledPopup) disabledPopup.style.display = "none"; });
     </script>
 </body>
 <footer>
