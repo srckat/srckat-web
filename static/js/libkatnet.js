@@ -1,11 +1,11 @@
 async function initPageCustom() {
   try {
     // replace with your actual API URL
-    const response = await fetch("https://api.srckat.me/v1/config");
+    const response = await fetch("https://vrc-net.srckat.me/api/collections/global_config/records/prod");
     const data = await response.json();
 
     // pull out the unix timestamp
-    const timestamp = data.config["owner"].age_unix;
+    const timestamp = data.ownerAgeUnix;
 
     // convert unix timestamp (seconds) → JS Date (ms)
     const birthDate = new Date(timestamp * 1000);
@@ -21,22 +21,22 @@ async function initPageCustom() {
     }
 
     //console.log(`Age: ${age}`);
-    document.getElementById("lkat-name").innerHTML = data.config.owner.shortname;
+    document.getElementById("lkat-name").innerHTML = data.ownerName;
     document.getElementById("lkat-age").innerHTML = age;
-    document.getElementById("lkat-pronoun").innerHTML = data.config.owner.pronoun;
-    document.getElementById("lkat-motd").innerHTML = data.config.katweb.motd;
-    document.getElementById("lkat-trusted").innerHTML = data.config.katweb.trusted;
-    document.getElementById("lkat-favgame").innerHTML = data.config.katweb.favgame;
-    document.getElementById("lkat-currproj").innerHTML = data.config.katweb.currproj;
-    document.getElementById("lkat-mood").innerHTML = data.config.owner.mood;
+    document.getElementById("lkat-pronoun").innerHTML = data.ownerPronouns;
+    document.getElementById("lkat-motd").innerHTML = data.webMotd;
+    document.getElementById("lkat-trusted").innerHTML = data.webTrusted;
+    document.getElementById("lkat-favgame").innerHTML = data.webFavGame;
+    document.getElementById("lkat-currproj").innerHTML = data.webCurrentProject;
+    document.getElementById("lkat-mood").innerHTML = data.ownerMood;
     
-    if (data.config.global_netvars.s_hgf) {
+    if (data.relationship) {
       document.getElementById("lkat-hgf").innerHTML = "Taken :3";
     } else {
       document.getElementById("lkat-hgf").innerHTML = "Single :[";
     }
 
-    if (!data.config.katweb.site_netvars.enabledrawing) {
+    if (!data.webEnableDrawing) {
       document.getElementById("open-draw").onclick = openDisabledPopup;
     }
   } catch (err) {
