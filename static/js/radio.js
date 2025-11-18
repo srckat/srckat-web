@@ -1,3 +1,5 @@
+// this is now practically useless, as arparec no longer exists. im gonna keep this here because im too lazy to remove it
+
 // Get the audio element
 const audio = document.getElementById('arpa-mpeg-radio');
 
