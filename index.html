@@ -307,6 +307,19 @@
         disabledCloseBtn.addEventListener("click", () => disabledPopup.style.display = "none");
         disabledPopup.addEventListener("click", e => { if (e.target === disabledPopup) disabledPopup.style.display = "none"; });
     </script>
+    <script>
+        async function sendHeart() {
+            fetch("https://pop.srckat.me/api/sendheart", {
+                method: "GET",
+                credentials: "include" // <--- send cookies to keep the session
+            })
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById("hearts-sent").textContent = data;
+                })
+                .catch(err => console.error(err));
+        }
+    </script>
 </body>
 <footer>
     <div>
