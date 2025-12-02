@@ -29,6 +29,7 @@ async function initPageCustom() {
     document.getElementById("lkat-favgame").innerHTML = data.webFavGame;
     document.getElementById("lkat-currproj").innerHTML = data.webCurrentProject;
     document.getElementById("lkat-mood").innerHTML = data.ownerMood;
+    document.getElementById("wdraw-cooldown").innerHTML = "To prevent spam, there is a " + data.webDrawingCooldown + "-second cooldown between submissions.";
     
     if (data.relationship) {
       document.getElementById("lkat-hgf").innerHTML = "Taken :3";
