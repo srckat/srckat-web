@@ -1,7 +1,7 @@
 async function initPageCustom() {
   try {
     // replace with your actual API URL
-    const response = await fetch("https://vrc-net.srckat.me/api/collections/config/records/prod");
+    const response = await fetch("https://apipi.srckat.me/api/collections/config/records/prod");
     const data = await response.json();
 
     // pull out the unix timestamp
