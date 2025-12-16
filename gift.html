@@ -130,78 +130,82 @@
   </div>
 
   <script>
-    const API_URL = "https://apipi.srckat.me/api/collections/wishlist/records/wshl_38195jze3u378614";
+  const API_URL =
+    "https://apipi.srckat.me/api/collections/wishlist/records/wshl_38195jze3u378614";
 
-    async function fetchWishlist() {
-      const res = await fetch(API_URL);
-      if (!res.ok) throw new Error("Failed to load wishlist");
-      return res.json();
+  async function fetchWishlist() {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("Failed to load wishlist");
+    return res.json();
+  }
+
+  async function fetchGame(appId) {
+    const res = await fetch(
+      `https://giftproxy.srckat.me/api/steam?id=${appId}`
+    );
+    if (!res.ok) return null;
+
+    const data = await res.json();
+    return data.success ? data.data : null;
+  }
+
+  function createGameCard(game, appId) {
+    const div = document.createElement("div");
+    div.className = "game";
+
+    const img = document.createElement("img");
+    img.src = game.header_image;
+    img.alt = game.name;
+
+    const title = document.createElement("div");
+    title.className = "game-title";
+    title.textContent = game.name;
+
+    const price = document.createElement("div");
+    price.className = "price";
+
+    if (game.price_overview) {
+      price.textContent = game.price_overview.final_formatted;
+    } else {
+      price.textContent = "View on Steam";
+      price.classList.add("unknown");
     }
 
-    async function fetchGame(appId) {
-      const res = await fetch(
-        `https://giftproxy.srckat.me/api/steam?id=${appId}`
-      );
-      const data = await res.json();
-      return data[appId]?.success ? data[appId].data : null;
-    }
+    div.appendChild(img);
+    div.appendChild(title);
+    div.appendChild(price);
 
-    function createGameCard(game, appId) {
-      const div = document.createElement("div");
-      div.className = "game";
+    div.onclick = () => {
+      window.location.href = `https://store.steampowered.com/app/${appId}/`;
+    };
 
-      const img = document.createElement("img");
-      img.src = game.header_image;
-      img.alt = game.name;
+    return div;
+  }
 
-      const title = document.createElement("div");
-      title.className = "game-title";
-      title.textContent = game.name;
+  async function init() {
+    try {
+      const wishlist = await fetchWishlist();
+      console.log("Wishlist loaded:", wishlist);
 
-      const price = document.createElement("div");
-      price.className = "price";
+      document.getElementById("addFriendLink").href =
+        `https://steamcommunity.com/profiles/${wishlist.steamId}/addfriend`;
 
-      if (game.price_overview) {
-        price.textContent = game.price_overview.final_formatted;
-      } else {
-        price.textContent = "View on Steam";
-        price.classList.add("unknown");
+      const container = document.getElementById("games");
+
+      for (const appId of wishlist.games) {
+        const game = await fetchGame(appId);
+        if (!game) continue;
+
+        container.appendChild(createGameCard(game, appId));
       }
-
-      div.appendChild(img);
-      div.appendChild(title);
-      div.appendChild(price);
-
-      div.onclick = () => {
-        window.location.href = `https://store.steampowered.com/app/${appId}/`;
-      };
-
-      return div;
+    } catch (err) {
+      console.error("Init error:", err);
     }
+  }
 
-    async function init() {
-      try {
-        const wishlist = await fetchWishlist();
+  init();
+</script>
 
-        // Add friend link
-        document.getElementById("addFriendLink").href =
-          `https://steamcommunity.com/profiles/${wishlist.steamId}/addfriend`;
-
-        const container = document.getElementById("games");
-
-        for (const appId of wishlist.games) {
-          const game = await fetchGame(appId);
-          if (!game) continue;
-
-          container.appendChild(createGameCard(game, appId));
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    init();
-  </script>
 
 </body>
 </html>
