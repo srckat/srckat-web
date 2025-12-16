@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Steam Wishlist Support</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b1f27, #0d0f14);
+      color: #e6e6e6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .box {
+      background: rgba(20, 24, 32, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    p {
+      color: #b8bcc6;
+      line-height: 1.6;
+    }
+
+    .instructions {
+      margin-bottom: 24px;
+    }
+
+    .instructions a {
+      color: #66aaff;
+      text-decoration: none;
+    }
+
+    .instructions a:hover {
+      text-decoration: underline;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .game {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .game:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .game img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .game-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .price {
+      font-size: 13px;
+      color: #9fd18b;
+    }
+
+    .price.unknown {
+      color: #aab0bb;
+    }
+
+    .footer {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #8a8f9a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="box">
+      <h1>Steam Wishlist Support</h1>
+
+      <div class="instructions">
+        <p>
+          If you want to support my work, you can gift one of the games below on Steam.
+        </p>
+        <p>
+          <strong>Important:</strong> Steam requires us to be friends before gifting.
+          <br>
+          <a id="addFriendLink" href="#" target="_blank">Add me on Steam</a>
+        </p>
+        <p>
+          Wishlist updates are manual and may take some time.
+        </p>
+      </div>
+
+      <div id="games" class="grid">
+        <!-- Games injected here -->
+      </div>
+
+      <div class="footer">
+        Game data and images © Valve Corporation. Used for informational purposes.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "https://apipi.srckat.me/api/collections/wishlist/records/wshl_38195jze3u378614";
+
+    async function fetchWishlist() {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error("Failed to load wishlist");
+      return res.json();
+    }
+
+    async function fetchGame(appId) {
+      const res = await fetch(
+        `https://store.steampowered.com/api/appdetails?appids=${appId}&cc=nz&l=en`
+      );
+      const data = await res.json();
+      return data[appId]?.success ? data[appId].data : null;
+    }
+
+    function createGameCard(game, appId) {
+      const div = document.createElement("div");
+      div.className = "game";
+
+      const img = document.createElement("img");
+      img.src = game.header_image;
+      img.alt = game.name;
+
+      const title = document.createElement("div");
+      title.className = "game-title";
+      title.textContent = game.name;
+
+      const price = document.createElement("div");
+      price.className = "price";
+
+      if (game.price_overview) {
+        price.textContent = game.price_overview.final_formatted;
+      } else {
+        price.textContent = "View on Steam";
+        price.classList.add("unknown");
+      }
+
+      div.appendChild(img);
+      div.appendChild(title);
+      div.appendChild(price);
+
+      div.onclick = () => {
+        window.location.href = `https://store.steampowered.com/app/${appId}/`;
+      };
+
+      return div;
+    }
+
+    async function init() {
+      try {
+        const wishlist = await fetchWishlist();
+
+        // Add friend link
+        document.getElementById("addFriendLink").href =
+          `https://steamcommunity.com/profiles/${wishlist.steamId}/addfriend`;
+
+        const container = document.getElementById("games");
+
+        for (const appId of wishlist.games) {
+          const game = await fetchGame(appId);
+          if (!game) continue;
+
+          container.appendChild(createGameCard(game, appId));
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    init();
+  </script>
+
+</body>
+</html>
