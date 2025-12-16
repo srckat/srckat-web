@@ -140,7 +140,7 @@
 
     async function fetchGame(appId) {
       const res = await fetch(
-        `https://store.steampowered.com/api/appdetails?appids=${appId}&cc=nz&l=en`
+        `https://giftproxy.srckat.me/api/steam?id=${appId}`
       );
       const data = await res.json();
       return data[appId]?.success ? data[appId].data : null;
