@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>6hr slowmode post validator :3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: system-ui, sans-serif;
+    background: #0d0f14;
+    color: #eee;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    font-size: 16px;
+    background: #1b1f27;
+    color: white;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.status {
+    margin-top: 15px;
+    padding: 10px;
+    background: #1b1f27;
+    border-radius: 6px;
+}
+
+.pass { color: #6aff6a; }
+.fail { color: #ff6a6a; }
+
+.big {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h2>6hr slowmode post validator :3</h2>
+
+<textarea id="input" placeholder="Type your message here..."></textarea>
+
+<div class="status">
+    <div id="shout"></div>
+    <div id="furry"></div>
+    <div id="nine11"></div>
+    <div id="result" class="big"></div>
+</div>
+
+<script>
+const furryWords = [
+  "meow","mew","nya",":3","mrrp","mrp","wruff","wuff","woof","waf","bark"
+];
+
+function check() {
+    const text = input.value.trim();
+    const words = text.split(/\s+/).filter(w => w.length);
+
+    // Shout or whisper
+    const isShout = text.startsWith("# :mega:") || text.startsWith("# 📣");
+    const isWhisper = text.startsWith("-# :last_quarter_moon_with_face:") || text.startsWith("-# 🌜");
+
+    // 9/11 emoji override
+    const has911 = text.includes("✈️🏢🏢");
+
+    // Count furry words
+    let furryCount = 0;
+    for (const w of words) {
+        const lw = w.toLowerCase();
+        if (furryWords.some(f => lw.includes(f))) furryCount++;
+    }
+
+    const furryPercent = words.length
+        ? (furryCount / words.length) * 100
+        : 0;
+
+    const furryOK = furryPercent >= 5;
+
+    // Display
+    shout.innerHTML = (isShout || isWhisper)
+        ? `<span class="pass">✔ Shout / Whisper detected</span>`
+        : `<span class="fail">✖ Must start with # 📣 or -# 🌜</span>`;
+
+    furry.innerHTML = furryOK
+        ? `<span class="pass">✔ Furrified (${furryPercent.toFixed(1)}%)</span>`
+        : `<span class="fail">✖ Furry words too low (${furryPercent.toFixed(1)}%)</span>`;
+
+    nine11.innerHTML = has911
+        ? `<span class="pass">✔ ✈️🏢🏢 present (override active)</span>`
+        : `<span class="fail">✖ ✈️🏢🏢 not present</span>`;
+
+    const valid = (isShout || isWhisper) && (furryOK || has911);
+
+    result.innerHTML = valid
+        ? `<span class="pass">POST IS VALID</span>`
+        : `<span class="fail">POST IS INVALID</span>`;
+}
+
+input.addEventListener("input", check);
+</script>
+
+</body>
+</html>
