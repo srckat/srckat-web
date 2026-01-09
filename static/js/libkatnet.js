@@ -32,6 +32,8 @@ async function initPageCustom() {
     document.getElementById("lkat-mood").innerHTML = data.ownerMood;
     document.getElementById("wdraw-cooldown").innerHTML = "To prevent spam, there is a " + data.webDrawingCooldown + "-second cooldown between submissions.";
     
+    document.getElementById("webdraw-disablementnotice").innerHTML = data.webDrawingDisabledNotice;
+
     if (data.relationship) {
       document.getElementById("lkat-hgf").innerHTML = "Taken :3";
     } else {
