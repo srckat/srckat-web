@@ -34,6 +34,11 @@ async function initPageCustom() {
     
     document.getElementById("webdraw-disablementnotice").innerHTML = data.webDrawingDisabledNotice;
 
+    // dumb ad shit that never worked
+    if (data.adsEnabled) {
+      document.getElementById("vrservice-gadd").innerHTML = '<iframe src="https://adservice.srckat.me/ad/AD_150009112500" scrolling="no" frameborder="0" seamless style="width: 352px; padding-bottom: 10px;"></iframe>';
+    }
+
     if (data.relationship) {
       document.getElementById("lkat-hgf").innerHTML = "Taken :3";
     } else {
