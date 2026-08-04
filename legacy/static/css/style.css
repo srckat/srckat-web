@@ -1,0 +1,242 @@
+:root {
+  --shadow-color: #e29ea9;
+  --container-bg-color: #f09ed0;
+  --container-border-color: #dd87d9;
+  --text-shadow-a: #ff86d1;
+  --text-shadow-b: #4fc3f7;
+  
+
+  /* Theme Colors */
+  background-color: hsl(285, 74%, 93%);
+}
+
+.schoolbell-regular {
+  font-family: "Schoolbell", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.size-title {
+    font-size: 80px;
+    margin-top: 0;
+    text-shadow: 4px 4px 0 var(--text-shadow-a), -4px -4px 0 var(--text-shadow-b);
+}
+
+.rshadow {
+    text-shadow: 3px 3px 0px var(--shadow-color);
+}
+
+.link {
+    color: #398bbb;
+}
+
+.bb-border {
+  border: 4px solid var(--container-border-color);
+  border-radius: 40px;
+  padding: 0px 10px;
+  background-color: var(--container-bg-color);
+  box-sizing: border-box;
+  /* Remove width: max-content */
+  max-width: 300px; /* optional: keeps blocks from growing too wide */
+  width: 100%;      /* makes block fill Masonry column */
+}
+
+.grid-container {
+  position: relative;
+  max-width: 100%; /* default for large screens */
+}
+
+.grid-sizer {
+  width: 300px;       /* sets the base column width for Masonry */
+}
+
+.abstract-div {
+  margin-bottom: 20px;      /* vertical spacing */
+  box-sizing: border-box;
+  width: 100%;              /* fill Masonry column */
+  max-width: 300px;         /* prevent block from growing too wide */
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: var(--container-bg-color);
+  border-radius: 40px;
+  box-shadow: 3px 3px 0px var(--shadow-color);
+  max-width: 300px;
+  margin: 20px 0;
+}
+
+.control-btn {
+  font-family: "Schoolbell", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 2px solid var(--container-border-color);
+  border-radius: 20px;
+  background-color: var(--container-bg-color);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--container-border-color);
+  transition: transform 0.1s;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--container-border-color);
+  box-shadow: inset 0 0 3px var(--container-border-color);
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #fff;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--container-border-color);
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #fff;
+}
+
+.fixed-bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0; /* Optional: to stretch across the width */
+  width: 100%; /* Optional: to stretch across the width */
+  padding-top: 10px;
+  /* Add other styling like background-color, padding, etc. */
+  /*background-color: rgba(216, 112, 147, 0.445);
+}
+
+.fade-top {
+  /*height: 200px; /* Or any desired height */
+  background: linear-gradient(to top, #d87093 20%, rgba(0, 0, 0, 0) 100%);
+  /* Replace rgba(0, 0, 0, 1) with your desired starting color (e.g., #FF0000 for red) */
+  /* Replace rgba(0, 0, 0, 0) with the transparent version of your color */
+}
+
+/* Popup overlay */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup box */
+.popup-content {
+  border: 4px solid var(--container-border-color);
+  border-radius: 40px;
+  background-color: var(--container-bg-color);
+  padding: 20px;
+  max-width: 500px;
+  width: 95%;
+  text-align: center;
+  position: relative;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Drawing buttons */
+.drawing-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+.colorbtn {
+  height: 4em;
+  width: 4em;
+  border-radius: 50%;
+  border: 0.4em solid var(--pink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--shadow-color);
+  transition: transform 0.1s;
+}
+
+.drawing-buttons button:hover {
+  transform: scale(1.1);
+}
+
+#draw-color-black { background: #000; }
+#draw-color-red { background: #f00; }
+#draw-color-white { background: #fff; }
+
+/* Canvas stack */
+.drawing-canvases {
+  display: grid;
+  justify-content: center;
+}
+
+.drawing-canvases canvas {
+  grid-column: 1;
+  grid-row: 1;
+  border: 0.5em solid var(--pink);
+  border-radius: 0.5em;
+  background: white;
+  image-rendering: pixelated;
+  cursor: crosshair;
+}
+
+.drawing-buttons {
+  display: flex;
+  gap: 0.5em;
+}
+
+.drawing-canvases {
+  margin-top: 1em;
+}
+
+.drawing-canvases canvas {
+  border: 0.5em solid var(--pink);
+  border-radius: 0.5em;
+  width: calc(100% - 1em);
+  height: auto;
+  image-rendering: pixelated;
+  cursor: crosshair;
+  background: #fff; /* canvas background */
+}
+
+.text-cutoff {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.grid-spacer {
+  height: 1000px; /* pushes bottom of grid up from page bottom */
+  width: 100%;
+}
